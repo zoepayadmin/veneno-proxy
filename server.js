@@ -7,11 +7,12 @@ app.use('/', createProxyMiddleware({
   target: 'https://venomcheckoutpremium.lovable.app',
   changeOrigin: true,
   headers: {
-    host: 'venomcheckoutpremium.lovable.app'
+    'X-Forwarded-Host': 'venomcheckoutpremium.lovable.app'
+  },
+  onProxyReq: (proxyReq, req) => {
+    // Passa o domínio original como header para o app saber qual checkout
+    proxyReq.setHeader('X-Original-Host', req.headers.host);
   }
 }));
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Proxy running on port ${PORT}`);
-});
+app.listen(3000);
