@@ -25,19 +25,3 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Proxy running on port ${PORT}`);
 });
-{
-  "name": "veneno-proxy",
-  "version": "1.0.0",
-  "description": "Reverse proxy for VenomCheckout custom domains",
-  "main": "server.js",
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "build": "echo 'No build step needed'"
-  },
-  "dependencies": {
-    "http-proxy": "^1.18.1"
-  }
-}
